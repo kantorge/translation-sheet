@@ -163,7 +163,7 @@ class Writer
             return true;
         }
 
-        return empty($translation[$locale]) && $this->fileIsJson($translation['sourceFile']);
+        return empty($translation[$locale]) && (config('translation_sheet.skip_empty_for_php') || $this->fileIsJson($translation['sourceFile']));
     }
 
     protected function fileIsJson($sourceFile)
